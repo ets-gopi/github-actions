@@ -12,5 +12,10 @@ jobs:
           node-version: 22
       - name: current working dir
         run: |
-              pwd
-              ls -l
+          pwd
+          ls -l
+          cd frontend/
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm test
