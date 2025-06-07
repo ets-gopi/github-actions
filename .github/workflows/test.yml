@@ -13,3 +13,4 @@ jobs:
       - name: current working dir
         run: |
               pwd
+              ls -l
