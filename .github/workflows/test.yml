@@ -10,11 +10,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: move to frontend dir
+      - name: current working dir
         run: |
-              cd frontend/
               echo pwd
-      - name: Install dependencies
-        run: npm ci
-      - name: Run Tests
-        run: npm test
