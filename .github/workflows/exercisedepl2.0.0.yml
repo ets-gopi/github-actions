@@ -1,0 +1,58 @@
+name: Practice Deployment version 2
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Install Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: |
+          cd exercise/
+          npm ci
+      - name: Check the Lint
+        run: |
+          cd exercise/
+          npm run lint
+  test:
+    needs: [lint]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Install Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: |
+          cd exercise/
+          npm ci
+      - name: Check the tests
+        run: |
+          cd exercise/
+          npm run test
+  deploy:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Install Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: |
+          cd exercise/
+          npm ci
+      - name: Build the project
+        run: |
+          cd exercise/
+          npm run build
+      - name: Deploy the project
+        run: echo "Deployed...."
