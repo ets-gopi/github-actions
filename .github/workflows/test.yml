@@ -23,6 +23,7 @@ jobs:
           cd frontend/
           npm test
   deploy:
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - name: Get code
