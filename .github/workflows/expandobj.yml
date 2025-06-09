@@ -1,0 +1,8 @@
+name: Expressions and Context Objs
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Expressions
+        run: ${{toJSON(github)}}
